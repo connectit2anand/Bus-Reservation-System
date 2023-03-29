@@ -1,5 +1,7 @@
 package services.impl;
 
-public class busDetailsImpl {
+import services.BusDetailServices;
+
+public class BusDetailsImpl implements BusDetailServices {
 
 }

@@ -1,5 +1,5 @@
 package services;
 
-public class busDetailServices {
+public interface BusDetailServices {
 
 }

@@ -1,38 +1,47 @@
 package entities;
-
+import java.util.*;
 
 public class Passenger extends User{
 	
-	private String username;
+	private int id;
 	private int busNumber;
-	private int numberOfSeats;
-	private int seatNumber;
+	private int numberOfSeatsBooked;
+	private List<Integer> seatNumbers;
 	
-	public String getUsername() {
-		return username;
+	
+	public Passenger(String username, String password, String address, String email,
+			 int busNumber,int numberOfSeatsBooked, List<Integer> seatNumbers) {
+		super(username, password, address, email);
+		
+		
+		this.busNumber = busNumber;
+		this.numberOfSeatsBooked = numberOfSeatsBooked;
+		this.seatNumbers = seatNumbers;
+		
 	}
 	
-	public void setUsername(String username) {
-		this.username = username;
-	}
 	public int getBusNumber() {
 		return busNumber;
 	}
+	
 	public void setBusNumber(int busNumber) {
 		this.busNumber = busNumber;
 	}
-	public int getNumberOfSeats() {
-		return numberOfSeats;
-	}
-	public void setNumberOfSeats(int numberOfSeats) {
-		this.numberOfSeats = numberOfSeats;
-	}
-	public int getSeatNumber() {
-		return seatNumber;
-	}
-	public void setSeatNumber(int seatNumber) {
-		this.seatNumber = seatNumber;
+	
+	public int getNumberOfSeatsBooked() {
+		return numberOfSeatsBooked;
 	}
 	
+	public void setNumberOfSeatsBooked(int numberOfSeatsBooked) {
+		this.numberOfSeatsBooked = numberOfSeatsBooked;
+	}
+	
+	public List<Integer> getSeatNumbers() {
+		return seatNumbers;
+	}
+	
+	public void setSeatNumbers(List<Integer> seatNumbers) {
+		this.seatNumbers = seatNumbers;
+	}
 	
 }

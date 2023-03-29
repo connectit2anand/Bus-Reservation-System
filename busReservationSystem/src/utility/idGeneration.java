@@ -1,5 +1,5 @@
 package utility;
 
-public class idGeneration {
+public class IdGeneration {
 
 }

@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 public class Transaction implements Serializable{
 	
+	private int id;
 	private String username;
 	private String email;
 	private String address;
@@ -14,6 +15,16 @@ public class Transaction implements Serializable{
 	private double total;
 	private LocalDate td;
 	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getUsername() {
 		return username;
 	}

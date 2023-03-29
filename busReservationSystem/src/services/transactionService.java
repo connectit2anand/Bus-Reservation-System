@@ -4,9 +4,9 @@ import java.util.List;
 
 import entities.Passenger;
 
-public interface transactionService {
+public interface TransactionService {
 	
-	public List<Passenger> passengerTransaction();
+	List<Passenger> passengerTransaction();
 	
-	public List<Passenger> passengerAllTransaction();
+	List<Passenger> passengerAllTransaction();
 }

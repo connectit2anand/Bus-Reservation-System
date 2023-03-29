@@ -2,7 +2,7 @@ package services;
 
 import java.util.List;
 
-public interface passengerService {
+public interface PassengerService {
 	
 	public List listOfBus();
 	

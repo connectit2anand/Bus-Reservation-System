@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class BusDetails implements Serializable{
 	
+	private int id;
 	private int busNumber;
 	private int noOfVacantSeats;
 	private int totalSeats;
@@ -17,8 +18,21 @@ public class BusDetails implements Serializable{
 		this.noOfVacantSeats = noOfVacantSeats;
 		this.totalSeats = totalSeats;
 		this.noOfOccupiedSeats = noOfOccupiedSeats;
+		//gernerate id logic
+		//set id
 	}
 	
+	
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 	public int getBusNumber() {
 		return busNumber;
 	}
