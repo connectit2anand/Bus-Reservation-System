@@ -1,12 +1,12 @@
 package exception;
 
-public class validDateException extends Exception{
+public class ValidDateException extends Exception{
 	
-	public validDateException() {
+	public ValidDateException() {
 		
 	}
 	
-	public validDateException(String message) {
+	public ValidDateException(String message) {
 		super(message);
 	}
 }

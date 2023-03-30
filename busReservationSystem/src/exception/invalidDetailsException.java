@@ -1,12 +1,8 @@
 package exception;
 
-public class invalidDetailsException extends Exception{
+public class InvalidDetailsException extends Exception{
 	
-	public invalidDetailsException() {
-		
-	}
-	
-	public invalidDetailsException(String message) {
+	public InvalidDetailsException(String message) {
 		super(message);
 	}
 }

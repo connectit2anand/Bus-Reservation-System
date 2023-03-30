@@ -1,20 +1,23 @@
 package services;
+import java.util.*;
 
-import java.util.List;
+import entities.Passenger;
+import exception.InvalidDetailsException;
+
 
 public interface PassengerService {
 	
-	public List listOfBus();
+	public void signUp(Scanner sc,Map<String,Passenger> passenger) throws InvalidDetailsException ;
 	
-	public int busNumber();
+	public void signIn(Scanner sc,Map<String,Passenger> passenger)throws InvalidDetailsException ;
 	
-	public String deleteTicket();
+	public void listOfBus();
 	
-	public void signUp();
+	public String busNumber();
 	
-	public boolean signIn();
+	public void deleteTicket();
 	
-	public List bookingHistory();
+	public void bookingHistory();
 	
 	public void deleteAccount();
 	

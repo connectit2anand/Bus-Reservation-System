@@ -2,41 +2,29 @@ package entities;
 
 import java.io.Serializable;
 
+import utility.IdGeneration;
+
 public class BusDetails implements Serializable{
 	
-	private int id;
-	private int busNumber;
+	
+	private String busNumber;
 	private int noOfVacantSeats;
 	private int totalSeats;
-	private int noOfOccupiedSeats;
+	private int noOfOccupiedSeats = 0;
 	
 	
 	
-	public BusDetails(int busNumber, int noOfVacantSeats, int totalSeats, int noOfOccupiedSeats) {
-		super();
+	public BusDetails(String busNumber, int totalSeats) {
 		this.busNumber = busNumber;
-		this.noOfVacantSeats = noOfVacantSeats;
 		this.totalSeats = totalSeats;
-		this.noOfOccupiedSeats = noOfOccupiedSeats;
-		//gernerate id logic
-		//set id
+		this.noOfVacantSeats = totalSeats;
+		
 	}
 	
-	
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
-	public int getBusNumber() {
+	public String getBusNumber() {
 		return busNumber;
 	}
-	public void setBusNumber(int busNumber) {
+	public void setBusNumber(String busNumber) {
 		this.busNumber = busNumber;
 	}
 	public int getNoOfVacantSeats() {
@@ -57,6 +45,10 @@ public class BusDetails implements Serializable{
 	public void setNoOfOccupiedSeats(int noOfOccupiedSeats) {
 		this.noOfOccupiedSeats = noOfOccupiedSeats;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "BusDetails [busNumber=" + busNumber + ", noOfVacantSeats=" + noOfVacantSeats + ", totalSeats="
+				+ totalSeats + ", noOfOccupiedSeats=" + noOfOccupiedSeats + "]";
+	}
 }
