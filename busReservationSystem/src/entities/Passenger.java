@@ -3,12 +3,16 @@ import java.util.*;
 
 public class Passenger extends User{
 	
-	private int id;
+
 	private int busNumber;
 	private int numberOfSeatsBooked;
 	private List<Integer> seatNumbers;
 	
 	
+	public Passenger(String username, String password, String address, String email) {
+		super(username, password, address, email);
+	}
+
 	public Passenger(String username, String password, String address, String email,
 			 int busNumber,int numberOfSeatsBooked, List<Integer> seatNumbers) {
 		super(username, password, address, email);

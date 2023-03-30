@@ -1,12 +1,12 @@
 package exception;
 
-public class transactionException extends Exception{
+public class TransactionException extends Exception{
 	
-	public transactionException() {
+	public TransactionException() {
 		
 	}
 	
-	public transactionException(String message) {
+	public TransactionException(String message) {
 		super(message);
 	}
 }

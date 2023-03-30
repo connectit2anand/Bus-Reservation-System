@@ -4,19 +4,16 @@ import java.io.Serializable;
 
 public class User implements Serializable{
 	
-	private int id;
+	
 	private String username;
 	private String password;
 	private String address;
 	private String email;
 	
-	public User() {
-		super();
-	}
+	
 	
 	public User(String username,String password,String address,String email) {
 		
-		super();
 		this.username = username;
 		this.password = password;
 		this.address = address;

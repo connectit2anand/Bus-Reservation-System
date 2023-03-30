@@ -16,10 +16,10 @@ import entities.Transaction;
 
 public class FileExist {
 	
-	public static Map<Long,Passenger> passengerFile(){
+	public static Map<String,Passenger> passengerFile(){
 		
 		File f = new File("passenger.ser");
-		Map<Long,Passenger> pFile = null;
+		Map<String,Passenger> pFile = null;
 		try {
 			if(!f.exists()) {
 				f.createNewFile();
@@ -28,7 +28,7 @@ public class FileExist {
 				oos.writeObject(pFile);
 			} else {
 				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
-				pFile = (Map<Long,Passenger>) ois.readObject();
+				pFile = (Map<String,Passenger>) ois.readObject();
 			}
 			
 		} catch(Exception e) {
@@ -37,10 +37,10 @@ public class FileExist {
 		return pFile;	
 	}
 	
-	public static Map<Long,BusDetails> busDetails(){
+	public static Map<String,BusDetails> busDetails(){
 		
 		File f = new File("busDetials.ser");
-		Map<Long,BusDetails> bFile = null;
+		Map<String,BusDetails> bFile = null;
 		try {
 			if(!f.exists()) {
 				f.createNewFile();
@@ -49,7 +49,7 @@ public class FileExist {
 				oos.writeObject(bFile);
 			} else {
 				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
-				bFile = (Map<Long,BusDetails>) ois.readObject();
+				bFile = (Map<String,BusDetails>) ois.readObject();
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
