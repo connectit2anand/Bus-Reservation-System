@@ -42,7 +42,13 @@ public class AdminServiceImpl implements AdminService {
 				throw dbn;				
 			}
 		}
-		BusDetails bd = new BusDetails(busNumber, totalSeats);
+		System.out.println("Enter bus source");
+		String source = sc.next();
+		System.out.println("Enter bus destination");
+		String destination = sc.next();
+		System.out.println("Enter price");
+		int price = sc.nextInt();
+		BusDetails bd = new BusDetails(busNumber, totalSeats, source, destination, price);
 		busDetails.put(busNumber, bd);
 	}
 
@@ -51,18 +57,11 @@ public class AdminServiceImpl implements AdminService {
 		
 		System.out.println("Enter The Bus Number For Which You Want To Update Details");
 		String busNumber = sc.next();
-		Set<Map.Entry<String, BusDetails>> set = busDetails.entrySet();
-		for(Map.Entry<String, BusDetails> me : set) {
-			if(me.getKey().equals(busNumber)) {
-				System.out.println("Enter The Total Number Of Seats");
-				int updatedSeats = sc.nextInt();
-				BusDetails bd = new BusDetails(busNumber, updatedSeats);
-				busDetails.put(busNumber, bd);
-				return;
-			}
+		if(!busDetails.containsKey(busNumber)) {
+			InvalidDetailsException ide = new InvalidDetailsException("Invalid Bus Number");
+			throw ide;
 		}
-		InvalidDetailsException ide = new InvalidDetailsException("Invalid Bus Number");
-		throw ide;
+		
 	}
 
 	@Override

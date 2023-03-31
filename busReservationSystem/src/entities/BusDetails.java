@@ -11,16 +11,46 @@ public class BusDetails implements Serializable{
 	private int noOfVacantSeats;
 	private int totalSeats;
 	private int noOfOccupiedSeats = 0;
+	private String source;
+	private String destination;
+	private int price;
 	
 	
 	
-	public BusDetails(String busNumber, int totalSeats) {
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public BusDetails(String busNumber, int totalSeats, String source,
+			String destination, int price) {
 		this.busNumber = busNumber;
 		this.totalSeats = totalSeats;
 		this.noOfVacantSeats = totalSeats;
-		
+		this.source = source;
+		this.destination = destination;
+		this.price = price;
 	}
 	
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+
 	public String getBusNumber() {
 		return busNumber;
 	}

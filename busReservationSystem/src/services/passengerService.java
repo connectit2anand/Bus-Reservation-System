@@ -7,9 +7,9 @@ import exception.InvalidDetailsException;
 
 public interface PassengerService {
 	
-	public void signUp(Scanner sc,Map<String,Passenger> passenger) throws InvalidDetailsException ;
+	public String signUp(Scanner sc,Map<String,Passenger> passenger) throws InvalidDetailsException ;
 	
-	public void signIn(Scanner sc,Map<String,Passenger> passenger)throws InvalidDetailsException ;
+	public String signIn(Scanner sc,Map<String,Passenger> passenger)throws InvalidDetailsException ;
 	
 	public void listOfBus();
 	
