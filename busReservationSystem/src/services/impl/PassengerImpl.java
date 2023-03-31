@@ -11,7 +11,7 @@ public class PassengerImpl implements PassengerService{
 
 	
 	@Override
-	public void signUp(Scanner sc,Map<String,Passenger> passenger)throws InvalidDetailsException {
+	public String signUp(Scanner sc,Map<String,Passenger> passenger)throws InvalidDetailsException {
 		
 		System.out.println("Enter User Name");
 		String username = sc.next();
@@ -34,14 +34,14 @@ public class PassengerImpl implements PassengerService{
 		
 		passenger.put(username, p);
 		System.out.println("Successfully Signed-Up");
-		
+		return username;
 		
 		
 		
 	}
 
 	@Override
-	public void signIn(Scanner sc,Map<String,Passenger> passenger)throws InvalidDetailsException{
+	public String signIn(Scanner sc,Map<String,Passenger> passenger)throws InvalidDetailsException{
 		
 		System.out.println("Enter User Name");
 		String username = sc.next();
@@ -61,7 +61,9 @@ public class PassengerImpl implements PassengerService{
 					new InvalidDetailsException("User Name Or Password Invalid");
 			throw ide;
 		}
+		
 		System.out.println("LoggedIn Successfully");
+		return username;
 	}
 	@Override
 	public void listOfBus() {

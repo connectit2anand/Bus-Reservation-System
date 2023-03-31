@@ -53,6 +53,7 @@ public class Main {
 			Map<String, BusDetails> bus) {
 		
 		int preference = 0;
+		String username = "";
 		do {
 			PassengerService psi = new PassengerImpl();
 			System.out.println("Enter 1 for Sign Up");
@@ -61,10 +62,10 @@ public class Main {
 			try {
 				switch(preference){
 				case 1:
-					psi.signUp(sc,passenger);
+					username = psi.signUp(sc,passenger);
 					break;
 				case 2:
-					psi.signIn(sc,passenger);	
+					username = psi.signIn(sc,passenger);	
 					preference = 0;
 					break;
 				default: 
@@ -81,9 +82,14 @@ public class Main {
 			
 		} while(preference != 0);
 		
-		passengerServiceAfterLoggedIn(sc,passenger,bus);
+		passengerServiceAfterLoggedIn(sc,passenger,bus, username);
 		
 		
+	}
+
+	private static void passengerServiceAfterLoggedIn(Scanner sc, Map<String, Passenger> passenger,
+			Map<String, BusDetails> bus, String username) {
+		System.out.println("Hello " + username + " please choose a service");
 	}
 
 	private static void updateBusSerFile(Map<String, Passenger> passenger) {
