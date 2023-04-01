@@ -61,7 +61,17 @@ public class AdminServiceImpl implements AdminService {
 			InvalidDetailsException ide = new InvalidDetailsException("Invalid Bus Number");
 			throw ide;
 		}
-		
+		System.out.println("Enter the new source");
+		String newSource = sc.next();
+		System.out.println("Enter the new destination");
+		String newDestination = sc.next();
+		System.out.println("Enter the new price");
+		int newPrice = sc.nextInt();
+		BusDetails bus = busDetails.get(busNumber);
+		bus.setSource(newSource);
+		bus.setDestination(newDestination);
+		bus.setPrice(newPrice);
+		busDetails.put(busNumber,bus);
 	}
 
 	@Override
@@ -79,7 +89,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void viewBookings(Map<String,BusDetails> busDetails) {
+	public void viewBusDetails(Map<String,BusDetails> busDetails) {
 		System.out.println("Bus Details");
 		Set<Map.Entry<String,BusDetails>> set = busDetails.entrySet();
 		for(Map.Entry<String, BusDetails> me : set) {

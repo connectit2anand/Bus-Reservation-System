@@ -11,7 +11,7 @@ public class PassengerImpl implements PassengerService{
 
 	
 	@Override
-	public String signUp(Scanner sc,Map<String,Passenger> passenger)throws InvalidDetailsException {
+	public Passenger signUp(Scanner sc,Map<String,Passenger> passenger)throws InvalidDetailsException {
 		
 		System.out.println("Enter User Name");
 		String username = sc.next();
@@ -34,14 +34,14 @@ public class PassengerImpl implements PassengerService{
 		
 		passenger.put(username, p);
 		System.out.println("Successfully Signed-Up");
-		return username;
+		return p;
 		
 		
 		
 	}
 
 	@Override
-	public String signIn(Scanner sc,Map<String,Passenger> passenger)throws InvalidDetailsException{
+	public Passenger signIn(Scanner sc,Map<String,Passenger> passenger)throws InvalidDetailsException{
 		
 		System.out.println("Enter User Name");
 		String username = sc.next();
@@ -63,18 +63,13 @@ public class PassengerImpl implements PassengerService{
 		}
 		
 		System.out.println("LoggedIn Successfully");
-		return username;
-	}
-	@Override
-	public void listOfBus() {
-		// TODO Auto-generated method stub
-		
+		return p;
 	}
 
 	@Override
-	public String busNumber() {
+	public void bookTicket(Passenger p) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 	@Override
@@ -82,8 +77,6 @@ public class PassengerImpl implements PassengerService{
 		// TODO Auto-generated method stub
 		
 	}
-
-	
 
 	@Override
 	public void bookingHistory() {
@@ -96,5 +89,7 @@ public class PassengerImpl implements PassengerService{
 		// TODO Auto-generated method stub
 		
 	}
+	
+
 	
 }

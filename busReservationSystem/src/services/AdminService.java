@@ -12,7 +12,7 @@ public interface AdminService {
 	void addBusDetails(Scanner sc,Map<String,BusDetails> busDetails) throws DuplicateBusNumberException;
 	void updateBusDetils(Scanner sc,Map<String,BusDetails> busDetails)throws InvalidDetailsException;
 	void deleteBusDetails(Scanner sc,Map<String,BusDetails> busDetails)throws InvalidDetailsException;
-	void viewBookings(Map<String,BusDetails> busDetails);
+	void viewBusDetails(Map<String,BusDetails> busDetails);
 	void viewBookingForDateRange();
 	void viewbookingsByBusName();
 	void viewbookingByUserNameOfPassenger();	

@@ -79,6 +79,9 @@ public class BusDetails implements Serializable{
 	@Override
 	public String toString() {
 		return "BusDetails [busNumber=" + busNumber + ", noOfVacantSeats=" + noOfVacantSeats + ", totalSeats="
-				+ totalSeats + ", noOfOccupiedSeats=" + noOfOccupiedSeats + "]";
+				+ totalSeats + ", noOfOccupiedSeats=" + noOfOccupiedSeats + ", source=" + source + ", destination="
+				+ destination + ", price=" + price + "]";
 	}
+
+	
 }

@@ -53,7 +53,7 @@ public class Main {
 			Map<String, BusDetails> bus) {
 		
 		int preference = 0;
-		String username = "";
+		Passenger p = null;
 		do {
 			PassengerService psi = new PassengerImpl();
 			System.out.println("Enter 1 for Sign Up");
@@ -62,10 +62,11 @@ public class Main {
 			try {
 				switch(preference){
 				case 1:
-					username = psi.signUp(sc,passenger);
+					p = psi.signUp(sc,passenger);
+					preference = 0;
 					break;
 				case 2:
-					username = psi.signIn(sc,passenger);	
+					p = psi.signIn(sc,passenger);	
 					preference = 0;
 					break;
 				default: 
@@ -82,14 +83,39 @@ public class Main {
 			
 		} while(preference != 0);
 		
-		passengerServiceAfterLoggedIn(sc,passenger,bus, username);
+		passengerServiceAfterLoggedIn(sc,passenger,bus, p);
 		
 		
 	}
 
 	private static void passengerServiceAfterLoggedIn(Scanner sc, Map<String, Passenger> passenger,
-			Map<String, BusDetails> bus, String username) {
-		System.out.println("Hello " + username + " please choose a service");
+			Map<String, BusDetails> bus, Passenger p) {
+		System.out.println("Hello " + p.getUsername() + " please choose a service");
+		System.out.println("1 -> Book Ticket.");
+		
+		int preference = 0;
+		PassengerService ps = new PassengerImpl();
+		do {
+			System.out.println("Please enter your preference.");
+			System.out.println("1 -> Book Ticket");
+			preference = sc.nextInt();
+			
+			try {
+				switch(preference){
+				case 1:
+					ps.bookTicket(sc,p,bus);
+					break;
+				default: 
+					throw new Exception("Please Enter Valid Preference");
+				}
+				
+			} catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+			finally {
+			}
+		} while(preference != 0);
+		
 	}
 
 	private static void updateBusSerFile(Map<String, Passenger> passenger) {
@@ -100,7 +126,6 @@ public class Main {
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
 	}
 
 	private static void adminService(Scanner sc, Map<String, BusDetails> busDetails) {
@@ -114,11 +139,14 @@ public class Main {
 		}
 		int preference = 0;
 		do {
-			System.out.println("Please enter your preference, " + " "
-					+ "'1' --> Add Bus Details , '2' --> Update Bus Detils, "
-					+ "'3' --> Delete Bus Details , '4' --> View Bookings, "
-					+ "'5' --> View Booking By UserName Of Passenger , '6' --> View Bookings By Bus Name, "
-					+ "'7' View Booking For Date Range, '0' For Exit");
+			System.out.println("Please enter your preference.");
+			System.out.println("1 -> Add Bus Details.");
+			System.out.println("2 -> Update Bus Details");
+			System.out.println("3 -> Delete Bus Details");
+			System.out.println("4 -> View Bus Details.");
+			System.out.println("5 -> View Booking By Username of Passenger.");
+			System.out.println("6 -> Biew Bookings By Bus Number.");
+			System.out.println("7 -> View Booking For Date Range.");
 			preference = sc.nextInt();
 			try {
 				switch(preference){
@@ -134,7 +162,7 @@ public class Main {
 					System.out.println("Bus Details Successfully Deleted");
 					break;
 				case 4:
-					as.viewBookings(busDetails);
+					as.viewBusDetails(busDetails);
 					break;
 				case 5:
 					as.viewbookingByUserNameOfPassenger();
