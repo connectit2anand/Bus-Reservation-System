@@ -25,3 +25,9 @@
 
 ## **ER Diagram**
 ![Er diagram](https://github.com/connectit2anand/offbeat-vest-9571/blob/main/busReservationSystem/images/er-diagram.jpeg?raw=true)
+
+## Console Outputs
+![1](https://github.com/connectit2anand/offbeat-vest-9571/blob/main/busReservationSystem/images/1.jpeg?raw=true)
+![2](https://github.com/connectit2anand/offbeat-vest-9571/blob/main/busReservationSystem/images/2.jpeg?raw=true)
+![3](https://github.com/connectit2anand/offbeat-vest-9571/blob/main/busReservationSystem/images/3.jpeg?raw=true)
+![4](https://github.com/connectit2anand/offbeat-vest-9571/blob/main/busReservationSystem/images/4.jpeg?raw=true)
