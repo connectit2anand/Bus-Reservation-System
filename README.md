@@ -8,7 +8,7 @@
 
 > Build Bus ticket reservation system application during the construct week at [Masai School](https://masaischool.com/). Completed the project within five days.
 
-# 👉 [Click here](https://youtube.com) to go through detail explanation of this application 
+# 👉 [Click here](https://drive.google.com/file/d/1NEGuIACK7DYjgxFXoHr2FEegUQot7kZ_/view?usp=share_link) to go through detail explanation of this application 
 
 # Features (Admin)
 - Admin can login with username(admin) and password(admin).
