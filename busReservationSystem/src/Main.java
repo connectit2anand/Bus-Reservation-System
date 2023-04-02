@@ -26,13 +26,17 @@ public class Main {
 		Map<Long,Transaction> transactions = FileExist.transaction();
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Welcome To, Apna Bus Reservation System \n");
-		
+		System.out.println("********************************************");
+		System.out.println("* Welcome To, Apna Bus Reservation System **");
+		System.out.println("******************************************** \n");
 		int preference = 0;
 		do {
-			System.out.println("Please enter your preference " + "\n '1' --> Admin login"
-					+ "\n '2' --> Passenger Service "
-					+ "\n '0' for exit");
+			System.out.println("********************************************");
+			System.out.println("* Please enter your preference 		   *");
+			System.out.println("* 1. for Admin Login                   	   *");
+			System.out.println("* 2. for Passenger Service                 *");
+			System.out.println("* 0. for Exit                  		   *");
+			System.out.println("********************************************");
 			preference = sc.nextInt();
 			switch(preference){
 			case 1:
@@ -59,8 +63,10 @@ public class Main {
 		Passenger currentPassenger = null;
 		do {
 			PassengerService psi = new PassengerImpl();
-			System.out.println("Enter 1 for Sign Up");
-			System.out.println("Enter 2 for Login");
+			System.out.println("***********************************");
+			System.out.println("* 1. Sign Up                      *");
+			System.out.println("* 2. Login                        *");
+			System.out.println("***********************************");
 			preference = sc.nextInt();
 			try {
 				switch(preference){
@@ -99,12 +105,14 @@ public class Main {
 		int preference = 0;
 		PassengerService ps = new PassengerImpl();
 		do {
+			System.out.println("****************************************************");
 			System.out.println("Hello " + currentPassenger.getUsername() + " please choose a service");
-			System.out.println("1 -> Book Ticket");
-			System.out.println("2 -> Add To Wallet");
-			System.out.println("3 -> View Transaction History");
-			System.out.println("4 -> Delete Ticket");
-			System.out.println("0 -> Exit");
+			System.out.println("* 1. Book Ticket                                   *");
+			System.out.println("* 2. Add To Wallet                                 *");
+			System.out.println("* 3. View Transaction History                      *");
+			System.out.println("* 4. Delete Ticket                                 *");
+			System.out.println("* 0. Exit                                          *");
+			System.out.println("****************************************************");
 			preference = sc.nextInt();
 			
 			try {
@@ -169,14 +177,16 @@ public class Main {
 		}
 		int preference = 0;
 		do {
-			System.out.println("Please enter your preference.");
-			System.out.println("1 -> Add Bus Details.");
-			System.out.println("2 -> Update Bus Details");
-			System.out.println("3 -> Delete Bus Details");
-			System.out.println("4 -> View Bus Details.");
-			System.out.println("5 -> View Booking By Username of Passenger.");
-			System.out.println("6 -> View Bookings By Bus Number.");
-			System.out.println("0 -> Exit.");
+			System.out.println("*********************************************");
+			System.out.println("* Please enter your preference.             *");
+			System.out.println("* 1. Add Bus Details.                       *");
+			System.out.println("* 2. Update Bus Details                     *");
+			System.out.println("* 3. Delete Bus Details                     *");
+			System.out.println("* 4. View Bus Details.                      *");
+			System.out.println("* 5. View Booking By Username of Passenger. *");
+			System.out.println("* 6. View Bookings By Bus Number.           *");
+			System.out.println("* 0. Exit.                                  *");
+			System.out.println("*********************************************");
 			preference = sc.nextInt();
 			try {
 				switch(preference){
