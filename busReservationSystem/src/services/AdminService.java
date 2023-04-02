@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import entities.BusDetails;
+import entities.Transaction;
 import exception.DuplicateBusNumberException;
 import exception.InvalidDetailsException;
 
@@ -15,7 +16,7 @@ public interface AdminService {
 	void viewBusDetails(Map<String,BusDetails> busDetails);
 	void viewBookingForDateRange();
 	void viewbookingsByBusName();
-	void viewbookingByUserNameOfPassenger();	
+	void viewbookingByUserNameOfPassenger(Map<Long,Transaction> transactions,Scanner sc);	
 }
 
 

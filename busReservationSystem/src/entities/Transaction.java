@@ -2,23 +2,43 @@ package entities;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+import utility.IdGeneration;
+
 import java.io.Serializable;
 
 public class Transaction implements Serializable{
 	
-	private int id;
+	private Long id;
 	private String username;
 	private String busNumber;
-	private double eachSeatPrice;
+	private int eachSeatPrice;
 	private int numberOfSeats;
 	private int total;
 	private String source;
 	private String destination;
 	private LocalDateTime td;
-	public int getId() {
+	
+	
+	
+	public Transaction( String username, String busNumber, int eachSeatPrice,
+			int numberOfSeats, int total,
+			String source, String destination, LocalDateTime td) {
+		
+		this.id = IdGeneration.generatetId();
+		this.username = username;
+		this.busNumber = busNumber;
+		this.eachSeatPrice = eachSeatPrice;
+		this.numberOfSeats = numberOfSeats;
+		this.total = total;
+		this.source = source;
+		this.destination = destination;
+		this.td = td;
+	}
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getUsername() {
@@ -36,7 +56,7 @@ public class Transaction implements Serializable{
 	public double getEachSeatPrice() {
 		return eachSeatPrice;
 	}
-	public void setEachSeatPrice(double eachSeatPrice) {
+	public void setEachSeatPrice(int eachSeatPrice) {
 		this.eachSeatPrice = eachSeatPrice;
 	}
 	public int getNumberOfSeats() {
@@ -68,6 +88,12 @@ public class Transaction implements Serializable{
 	}
 	public void setTd(LocalDateTime td) {
 		this.td = td;
+	}
+	@Override
+	public String toString() {
+		return "Transaction [id=" + id + "\n username=" + username + "\n busNumber=" + busNumber + "\n eachSeatPrice="
+				+ eachSeatPrice + "\n numberOfSeats=" + numberOfSeats + "\n total=" + total + "\n source=" + source
+				+ "\n destination=" + destination + "\n td=" + td + "]";
 	}
 	
 }

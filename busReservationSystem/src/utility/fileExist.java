@@ -58,10 +58,10 @@ public class FileExist {
 		
 	}
 	
-	public static List<Transaction> transaction(){
+	public static Map<Long, Transaction> transaction(){
 		
 		File f = new File("transaction.ser");
-		List<Transaction> tFile = new ArrayList<>();
+		Map<Long, Transaction> tFile = new HashMap<>();
 		try {
 			if(!f.exists()) {
 				f.createNewFile();
@@ -69,7 +69,7 @@ public class FileExist {
 				oos.writeObject(tFile);
 			} else {
 				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
-				tFile = (List<Transaction>) ois.readObject();
+				tFile = (Map<Long, Transaction>) ois.readObject();
 			}
 			
 		} catch(Exception e) {

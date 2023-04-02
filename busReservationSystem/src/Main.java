@@ -23,8 +23,7 @@ public class Main {
 		
 		Map<String,Passenger> passenger= FileExist.passengerFile();
 		Map<String,BusDetails> busDetails = FileExist.busDetails();
-		List<Transaction> transaction = FileExist.transaction();
-		
+		Map<Long,Transaction> transactions = FileExist.transaction();
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Welcome , To Apna Bus Reservation System");
@@ -37,9 +36,13 @@ public class Main {
 			preference = sc.nextInt();
 			switch(preference){
 			case 1:
-				adminService(sc,busDetails);
+				adminService(sc,busDetails,transactions);
+				break;
 			case 2:
-				passengerService(sc,passenger, busDetails);
+				passengerService(sc,passenger,transactions, busDetails);
+				break;
+			default: 
+				System.out.println("Please Enter a valid preference");
 			}
 			
 		} while(preference != 0);
@@ -49,11 +52,11 @@ public class Main {
 	}
 
 	private static void passengerService(Scanner sc,
-			Map<String, Passenger> passenger,
-			Map<String, BusDetails> bus) {
+			Map<String, Passenger> passenger,Map<Long,Transaction> transactions,
+			Map<String, BusDetails> busDetails) {
 		
 		int preference = 0;
-		Passenger p = null;
+		Passenger currentPassenger = null;
 		do {
 			PassengerService psi = new PassengerImpl();
 			System.out.println("Enter 1 for Sign Up");
@@ -62,11 +65,11 @@ public class Main {
 			try {
 				switch(preference){
 				case 1:
-					p = psi.signUp(sc,passenger);
+					currentPassenger = psi.signUp(sc,passenger);
 					preference = 0;
 					break;
 				case 2:
-					p = psi.signIn(sc,passenger);	
+					currentPassenger = psi.signIn(sc,passenger);	
 					preference = 0;
 					break;
 				default: 
@@ -78,32 +81,45 @@ public class Main {
 			}
 			
 			finally{
-				updateBusSerFile(passenger);
+				updatePassengerSerFile(passenger);
 			}
 			
 		} while(preference != 0);
 		
-		passengerServiceAfterLoggedIn(sc,passenger,bus, p);
+		passengerServiceAfterLoggedIn(sc,passenger,busDetails, currentPassenger,transactions);
 		
 		
 	}
 
-	private static void passengerServiceAfterLoggedIn(Scanner sc, Map<String, Passenger> passenger,
-			Map<String, BusDetails> bus, Passenger p) {
-		System.out.println("Hello " + p.getUsername() + " please choose a service");
-		System.out.println("1 -> Book Ticket.");
+	private static void passengerServiceAfterLoggedIn(Scanner sc,Map<String,Passenger> passenger,
+			Map<String, BusDetails> busDetails, Passenger currentPassenger,  
+			Map<Long,Transaction> transactions) {
+		
 		
 		int preference = 0;
 		PassengerService ps = new PassengerImpl();
 		do {
-			System.out.println("Please enter your preference.");
+			System.out.println("Hello " + currentPassenger.getUsername() + " please choose a service");
 			System.out.println("1 -> Book Ticket");
+			System.out.println("2 -> Add To Wallet");
+			System.out.println("3 -> View Transaction History");
+			System.out.println("4 -> Delete Ticket");
+			System.out.println("0 -> Exit");
 			preference = sc.nextInt();
 			
 			try {
 				switch(preference){
 				case 1:
-					ps.bookTicket(sc,p,bus);
+					ps.bookTicket(sc,passenger, transactions, busDetails, currentPassenger);
+					break;
+				case 2:
+					ps.addToWallet(sc,passenger,currentPassenger);
+					break;
+				case 3:
+					ps.bookingHistory(currentPassenger.getUsername(),transactions);
+					break;
+				case 4:
+					ps.deleteTicket(sc,transactions);
 					break;
 				default: 
 					throw new Exception("Please Enter Valid Preference");
@@ -113,22 +129,36 @@ public class Main {
 				System.out.println(e.getMessage());
 			}
 			finally {
+				updatePassengerSerFile(passenger);
+				updateTransactionSerFile(transactions);
+				updateSerFile(busDetails);
 			}
 		} while(preference != 0);
 		
 	}
 
-	private static void updateBusSerFile(Map<String, Passenger> passenger) {
+	private static void updateTransactionSerFile(Map<Long, Transaction> transactions) {
 		try {
 			ObjectOutputStream oos = 
-					new ObjectOutputStream(new FileOutputStream("PassengerDetails.ser"));
+					new ObjectOutputStream(new FileOutputStream("transaction.ser"));
+			oos.writeObject(transactions);
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	private static void updatePassengerSerFile(Map<String, Passenger> passenger) {
+		try {
+			ObjectOutputStream oos = 
+					new ObjectOutputStream(new FileOutputStream("passenger.ser"));
 			oos.writeObject(passenger);
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
-	private static void adminService(Scanner sc, Map<String, BusDetails> busDetails) {
+	private static void adminService(Scanner sc, Map<String, BusDetails> busDetails,
+			Map<Long,Transaction> transactions) {
 		
 		AdminService as = new AdminServiceImpl();
 		try {
@@ -146,7 +176,7 @@ public class Main {
 			System.out.println("4 -> View Bus Details.");
 			System.out.println("5 -> View Booking By Username of Passenger.");
 			System.out.println("6 -> Biew Bookings By Bus Number.");
-			System.out.println("7 -> View Booking For Date Range.");
+			System.out.println("0 -> Exit.");
 			preference = sc.nextInt();
 			try {
 				switch(preference){
@@ -165,7 +195,7 @@ public class Main {
 					as.viewBusDetails(busDetails);
 					break;
 				case 5:
-					as.viewbookingByUserNameOfPassenger();
+					as.viewbookingByUserNameOfPassenger(transactions,sc);
 					break;
 				case 6:
 					as.viewbookingsByBusName();

@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 import entities.BusDetails;
+import entities.Transaction;
 import exception.DuplicateBusNumberException;
 import exception.InvalidDetailsException;
 import services.AdminService;
@@ -102,7 +103,6 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void viewbookingsByBusName() {
 		// TODO Auto-generated method stub
@@ -110,8 +110,21 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void viewbookingByUserNameOfPassenger() {
-		// TODO Auto-generated method stub
+	public void viewbookingByUserNameOfPassenger(Map<Long,Transaction> transactions,Scanner sc) {
+		System.out.println("Enter The User Name");
+		String username = sc.next();
+		boolean userNameAvailable = false;
+		Set<Map.Entry<Long, Transaction>> set = transactions.entrySet();
+		for(Map.Entry<Long, Transaction> me : set) {
+			if(me.getValue().getUsername().equals(username)) {
+				userNameAvailable = true;
+				System.out.println(me.getValue());
+			}
+		}
+		if(!userNameAvailable) {
+			System.out.println("User Name Does NOT Exist");
+		}
+		
 		
 	}
 	
