@@ -26,13 +26,13 @@ public class Main {
 		Map<Long,Transaction> transactions = FileExist.transaction();
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Welcome , To Apna Bus Reservation System");
+		System.out.println("Welcome To, Apna Bus Reservation System \n");
 		
 		int preference = 0;
 		do {
-			System.out.println("Please enter your preference, " + " '1' --> Admin login ,"
-					+ " '2' --> Passenger Service , "
-					+ " '0' for exit");
+			System.out.println("Please enter your preference " + "\n '1' --> Admin login"
+					+ "\n '2' --> Passenger Service "
+					+ "\n '0' for exit");
 			preference = sc.nextInt();
 			switch(preference){
 			case 1:
@@ -175,7 +175,7 @@ public class Main {
 			System.out.println("3 -> Delete Bus Details");
 			System.out.println("4 -> View Bus Details.");
 			System.out.println("5 -> View Booking By Username of Passenger.");
-			System.out.println("6 -> Biew Bookings By Bus Number.");
+			System.out.println("6 -> View Bookings By Bus Number.");
 			System.out.println("0 -> Exit.");
 			preference = sc.nextInt();
 			try {
