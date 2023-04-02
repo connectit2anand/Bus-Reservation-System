@@ -3,49 +3,17 @@ import java.util.*;
 
 public class Passenger extends User{
 	
-
-	private int busNumber;
-	private int numberOfSeatsBooked;
-	private List<Integer> seatNumbers;
-	
+	private int walet;
 	
 	public Passenger(String username, String password, String address, String email) {
 		super(username, password, address, email);
 	}
+		
+	public int getWalet() {
+		return walet;
+	}
 
-	public Passenger(String username, String password, String address, String email,
-			 int busNumber,int numberOfSeatsBooked, List<Integer> seatNumbers) {
-		super(username, password, address, email);
-		
-		
-		this.busNumber = busNumber;
-		this.numberOfSeatsBooked = numberOfSeatsBooked;
-		this.seatNumbers = seatNumbers;
-		
+	public void setWalet(int walet) {
+		this.walet = walet;
 	}
-	
-	public int getBusNumber() {
-		return busNumber;
-	}
-	
-	public void setBusNumber(int busNumber) {
-		this.busNumber = busNumber;
-	}
-	
-	public int getNumberOfSeatsBooked() {
-		return numberOfSeatsBooked;
-	}
-	
-	public void setNumberOfSeatsBooked(int numberOfSeatsBooked) {
-		this.numberOfSeatsBooked = numberOfSeatsBooked;
-	}
-	
-	public List<Integer> getSeatNumbers() {
-		return seatNumbers;
-	}
-	
-	public void setSeatNumbers(List<Integer> seatNumbers) {
-		this.seatNumbers = seatNumbers;
-	}
-	
 }

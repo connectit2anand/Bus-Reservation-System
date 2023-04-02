@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 import entities.BusDetails;
+import entities.Transaction;
 import exception.DuplicateBusNumberException;
 import exception.InvalidDetailsException;
 import services.AdminService;
@@ -61,7 +62,17 @@ public class AdminServiceImpl implements AdminService {
 			InvalidDetailsException ide = new InvalidDetailsException("Invalid Bus Number");
 			throw ide;
 		}
-		
+		System.out.println("Enter the new source");
+		String newSource = sc.next();
+		System.out.println("Enter the new destination");
+		String newDestination = sc.next();
+		System.out.println("Enter the new price");
+		int newPrice = sc.nextInt();
+		BusDetails bus = busDetails.get(busNumber);
+		bus.setSource(newSource);
+		bus.setDestination(newDestination);
+		bus.setPrice(newPrice);
+		busDetails.put(busNumber,bus);
 	}
 
 	@Override
@@ -79,7 +90,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void viewBookings(Map<String,BusDetails> busDetails) {
+	public void viewBusDetails(Map<String,BusDetails> busDetails) {
 		System.out.println("Bus Details");
 		Set<Map.Entry<String,BusDetails>> set = busDetails.entrySet();
 		for(Map.Entry<String, BusDetails> me : set) {
@@ -92,7 +103,6 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void viewbookingsByBusName() {
 		// TODO Auto-generated method stub
@@ -100,8 +110,21 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void viewbookingByUserNameOfPassenger() {
-		// TODO Auto-generated method stub
+	public void viewbookingByUserNameOfPassenger(Map<Long,Transaction> transactions,Scanner sc) {
+		System.out.println("Enter The User Name");
+		String username = sc.next();
+		boolean userNameAvailable = false;
+		Set<Map.Entry<Long, Transaction>> set = transactions.entrySet();
+		for(Map.Entry<Long, Transaction> me : set) {
+			if(me.getValue().getUsername().equals(username)) {
+				userNameAvailable = true;
+				System.out.println(me.getValue());
+			}
+		}
+		if(!userNameAvailable) {
+			System.out.println("User Name Does NOT Exist");
+		}
+		
 		
 	}
 	

@@ -1,121 +1,99 @@
 package entities;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import utility.IdGeneration;
+
 import java.io.Serializable;
 
 public class Transaction implements Serializable{
 	
-	private int id;
+	private Long id;
 	private String username;
-	private String email;
-	private String address;
-	private String busName;
-	private double eachSeatPrice;
+	private String busNumber;
+	private int eachSeatPrice;
 	private int numberOfSeats;
-	private double total;
-	private LocalDate td;
+	private int total;
+	private String source;
+	private String destination;
+	private LocalDateTime td;
 	
 	
 	
-	public int getId() {
+	public Transaction( String username, String busNumber, int eachSeatPrice,
+			int numberOfSeats, int total,
+			String source, String destination, LocalDateTime td) {
+		
+		this.id = IdGeneration.generatetId();
+		this.username = username;
+		this.busNumber = busNumber;
+		this.eachSeatPrice = eachSeatPrice;
+		this.numberOfSeats = numberOfSeats;
+		this.total = total;
+		this.source = source;
+		this.destination = destination;
+		this.td = td;
+	}
+	public Long getId() {
 		return id;
 	}
-
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String getUsername() {
 		return username;
 	}
-	
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
-	public String getEmail() {
-		return email;
+	public String getBusNumber() {
+		return busNumber;
 	}
-	
-	public void setEmail(String email) {
-		this.email = email;
+	public void setBusNumber(String busNumber) {
+		this.busNumber = busNumber;
 	}
-	
-	public String getAddress() {
-		return address;
-	}
-	
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	
-	public String getBusName() {
-		return busName;
-	}
-	
-	public void setBusName(String busName) {
-		this.busName = busName;
-	}
-	
 	public double getEachSeatPrice() {
 		return eachSeatPrice;
 	}
-	
-	public void setEachSeatPrice(double eachSeatPrice) {
+	public void setEachSeatPrice(int eachSeatPrice) {
 		this.eachSeatPrice = eachSeatPrice;
 	}
-	
 	public int getNumberOfSeats() {
 		return numberOfSeats;
 	}
-	
 	public void setNumberOfSeats(int numberOfSeats) {
 		this.numberOfSeats = numberOfSeats;
 	}
-	
-	public double getTotal() {
+	public int getTotal() {
 		return total;
 	}
-	
-	public void setTotal(double total) {
+	public void setTotal(int total) {
 		this.total = total;
 	}
-	
-	public LocalDate getTd() {
+	public String getSource() {
+		return source;
+	}
+	public void setSource(String source) {
+		this.source = source;
+	}
+	public String getDestination() {
+		return destination;
+	}
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+	public LocalDateTime getTd() {
 		return td;
 	}
-	
-	public void setTd(LocalDate td) {
+	public void setTd(LocalDateTime td) {
 		this.td = td;
 	}
-
-	public Transaction() {
-		super();
-	}
-
-	public Transaction(String username, String email, String address, String busName, double eachSeatPrice,
-			int numberOfSeats, double total, LocalDate td) {
-		super();
-		this.username = username;
-		this.email = email;
-		this.address = address;
-		this.busName = busName;
-		this.eachSeatPrice = eachSeatPrice;
-		this.numberOfSeats = numberOfSeats;
-		this.total = total;
-		this.td = td;
-	}
-
 	@Override
 	public String toString() {
-		return "Transaction [username=" + username + ", email=" + email + ", address=" + address + ", busName="
-				+ busName + ", eachSeatPrice=" + eachSeatPrice + ", numberOfSeats=" + numberOfSeats + ", total=" + total
-				+ ", td=" + td + "]";
+		return "Transaction [id=" + id + "\n username=" + username + "\n busNumber=" + busNumber + "\n eachSeatPrice="
+				+ eachSeatPrice + "\n numberOfSeats=" + numberOfSeats + "\n total=" + total + "\n source=" + source
+				+ "\n destination=" + destination + "\n td=" + td + "]";
 	}
-	
-	
-	
-	
-	
 	
 }
