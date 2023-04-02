@@ -235,7 +235,7 @@ public class PassengerImpl implements PassengerService{
 	public void addToWallet(Scanner sc, Map<String, Passenger> passenger,
 			Passenger currentPassenger) {
 		System.out.println("**********************************************");
-		System.out.println("* Your current wallet balance is: " + currentPassenger.getWalet());
+		System.out.println("* Your current wallet balance is: RS " + currentPassenger.getWalet());
 		System.out.println("**********************************************");
 		System.out.println("*****************************************");
 		System.out.println("* Enter The Amount You Want To Add      *");
@@ -252,8 +252,19 @@ public class PassengerImpl implements PassengerService{
 		passenger.put(userName, currentPassenger);
 		System.out.println("*****************************************");
 		System.out.println("* Balance added successfully            *");
-		System.out.println("Current balance is " + currentPassenger.getWalet());
+		System.out.println("Current balance is RS " + currentPassenger.getWalet());
 		System.out.println("*****************************************");
+	}
+
+	@Override
+	public void viewWalletBalance(Passenger currentPassenger) {
+		String username = currentPassenger.getUsername();
+		int amount = currentPassenger.getWalet();
+		System.out.println("*********************************************");
+		System.out.println("* Hi " + username);
+		System.out.println("* Your Current Wallet Balance is RS " + amount + "       *");
+		System.out.println("*********************************************"); 	
+		
 	}
 	
 

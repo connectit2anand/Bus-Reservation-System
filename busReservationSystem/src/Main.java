@@ -110,7 +110,8 @@ public class Main {
 			System.out.println("* 1. Book Ticket                                   *");
 			System.out.println("* 2. Add To Wallet                                 *");
 			System.out.println("* 3. View Transaction History                      *");
-			System.out.println("* 4. Delete Ticket                                 *");
+			System.out.println("* 4. Cancel Ticket                                 *");
+			System.out.println("* 5. View Wallet Balance                           *");
 			System.out.println("* 0. Exit                                          *");
 			System.out.println("****************************************************");
 			preference = sc.nextInt();
@@ -129,6 +130,8 @@ public class Main {
 				case 4:
 					ps.deleteTicket(sc,transactions);
 					break;
+				case 5:
+					ps.viewWalletBalance(currentPassenger);
 				default: 
 					throw new Exception("Please Enter Valid Preference");
 				}
@@ -195,11 +198,15 @@ public class Main {
 					break;
 				case 2:
 					as.updateBusDetils(sc,busDetails);	
-					System.out.println("Bus Details Successfully Updated");
+					System.out.println("*********************************************");
+					System.out.println("* Bus Details Successfully Updated          *");
+					System.out.println("*********************************************");
 					break;
 				case 3:	
 					as.deleteBusDetails(sc,busDetails);
-					System.out.println("Bus Details Successfully Deleted");
+					System.out.println("*********************************************");
+					System.out.println("* Bus Details Successfully Deleted          *");
+					System.out.println("*********************************************");
 					break;
 				case 4:
 					as.viewBusDetails(busDetails);

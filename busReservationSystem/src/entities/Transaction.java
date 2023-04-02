@@ -17,6 +17,12 @@ public class Transaction implements Serializable{
 	private int total;
 	private String source;
 	private String destination;
+	
+	@Override
+	public String toString() {
+		return "Transaction [id=" + id + ", busNumber=" + busNumber + ", numberOfSeats=" + numberOfSeats + ", total="
+				+ total + ", source=" + source + ", destination=" + destination + ", td=" + td + "]";
+	}
 	private LocalDateTime td;
 	
 	
@@ -88,12 +94,6 @@ public class Transaction implements Serializable{
 	}
 	public void setTd(LocalDateTime td) {
 		this.td = td;
-	}
-	@Override
-	public String toString() {
-		return "Transaction [id=" + id + "\n username=" + username + "\n busNumber=" + busNumber + "\n eachSeatPrice="
-				+ eachSeatPrice + "\n numberOfSeats=" + numberOfSeats + "\n total=" + total + "\n source=" + source
-				+ "\n destination=" + destination + "\n td=" + td + "]";
 	}
 	
 }

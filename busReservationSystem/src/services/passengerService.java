@@ -24,6 +24,8 @@ public interface PassengerService {
 	public void deleteAccount();
 
 	public void addToWallet(Scanner sc, Map<String, Passenger> passenger, Passenger currentPassenger);
+
+	public void viewWalletBalance(Passenger currentPassenger);
 	
 		
 }
